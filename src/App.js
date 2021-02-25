@@ -8,7 +8,7 @@ import {
 import Header from './Components/Common/Header/Header.js';
 import HomePage from './Components/HomePage/HomePage.js';
 import ListPage from './Components/ListPage/ListPage.js';
-import DetailPage from './Components/DetailsPage/DetailPage.js';
+import DetailsPage from './Components/DetailsPage/DetailsPage.js';
 import CreatePage from './Components/UpdatePage/CreatePage.js';
 
 
@@ -32,7 +32,7 @@ export default class App extends Component {
                         <Route 
                             path="/messier_catalog/:messier_id" 
                             exact
-                            component={DetailPage} 
+                            component={DetailsPage} 
                         />
                         <Route 
                             path="/messier_catalog/create" 

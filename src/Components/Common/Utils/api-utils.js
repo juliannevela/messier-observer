@@ -13,7 +13,7 @@ export async function getTypes() {
 }
 
 export async function getMessierObject(id) {
-    const { body } = await request.get(`${URL}/messier_catalog/:${id}`)
+    const { body } = await request.get(`${URL}/messier_catalog/${id}`)
 
     return body;
 
@@ -36,4 +36,13 @@ export async function updateMessierObject(id, messierObject) {
         .send(messierObject);
 
         return body;
+}
+
+export async function getTypeId(object, types) {
+    const type = types.find(type =>
+        object.object_type === type.type
+    );
+
+    const typeId = type.id;
+    return typeId;
 }

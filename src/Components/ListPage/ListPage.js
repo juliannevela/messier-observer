@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './ListPage.css';
 import { getCatalog } from '../Common/Utils/api-utils';
 import Loading from '../Common/Utils/Loading.js';
@@ -42,8 +43,8 @@ export default class ListPage extends Component {
                 </aside>
                 
                 <ul className='list'>
-                    {messier_catalog.map(item => 
-                        <li className='messierObject'>
+                    {messier_catalog.map(item => <Link to={`/messier_catalog/${item.messier_id}`} key={item.messier_id}>                        
+                        <li className='messierObject' key={item.messier_id}>
                             <p>{item.messier_id} ({item.ngc_ic_num})</p>
                             <img alt={item.type} src={item.image} />
                             <p>Common Name: {item.common_name}</p>
@@ -54,7 +55,9 @@ export default class ListPage extends Component {
                             <p>RA: {item.right_asc}</p>
                             <p>dec: {item.declination}</p>
                             <p>{item.observation_completed}</p>
-                        </li>)}
+                        </li>)
+                        </Link>
+                    )}
                 </ul>
             </main>
         )
