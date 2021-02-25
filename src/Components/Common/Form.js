@@ -1,112 +1,160 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import { useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
  
- function Form() {
-     const formik = useFormik({
-         initialValues: { 
-             messier_id: '', 
-             ngc_ic_num: '',
-             common_name: '',
-             image: '',
-             distance_from_earth_kly: '',
-             constellation: '',
-             apparent_mag: '',
-             right_asc: '',
-             declination: '',
-             observation_completed: false,
-         },
-         onSubmit: values => {
-             alert(JSON.stringify(values, null, 2));
-         },
-     });
+ export default function updateForm() {
      return (
-         <form onSubmit={formik.handleSubmit}>
-             <label htmlFor='messier_id'>Messier Number</label>
-             <input 
-                 id='messier_id'
-                 name='messier_id'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={Number(formik.values.messier_id)}
-             /> 
-             <label htmlFor='ngc_ic_num'>New General Catalogue ID</label>
-             <input 
-                 id='ngc_ic_num'
-                 name='ngc_ic_num'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.ngc_ic_num}
-             /> 
-             <label htmlFor='common_name'>Common Name (if applicable)</label>
-             <input 
-                 id='common_name'
-                 name='common_name'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.common_name}
-             /> 
-             <label htmlFor='image'>Image URL</label>
-             <input 
-                 id='image'
-                 name='image'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.image}
-             /> 
-             <label htmlFor='distance_from_earth_kly'>Distance from Earth (kly)</label>
-             <input 
-                 id='distance_from_earth_kly'
-                 name='distance_from_earth_kly'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.distance_from_earth_kly}
-             /> 
-             <label htmlFor='constellation'>Constellation</label>
-             <input 
-                 id='constellation'
-                 name='constellation'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.constellation}
-             /> 
-             <label htmlFor='apparent_mag'>Apparent Magnitude</label>
-             <input 
-                 id='apparent_mag'
-                 name='apparent_mag'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={Number(formik.values.apparent_mag)}
-             /> 
-             <label htmlFor='right_asc'>RA</label>
-             <input 
-                 id='right_asc'
-                 name='right_asc'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.right_asc}
-             /> 
-             <label htmlFor='declination'>Dec</label>
-             <input 
-                 id='declination'
-                 name='declination'
-                 type='text'
-                 onChange={formik.handleChange}
-                 value={formik.values.declination}
-             /> 
-             <label htmlFor='observation_completed'>Observation Completed?</label>
-             <input 
-                 id='observation_completed'
-                 name='observation_completed'
-                 type='checkbox'
-                 onChange={formik.handleChange}
-                 value={formik.values.observation_completed}
-             /> 
-             <button type='submit'>Update</button>
-         </form>
-     );
- }
- 
- export default Form
+         <Formik 
+            initialValues={{
+               messier_id: '', 
+               ngc_ic_num: '',
+               common_name: '',
+               image: '',
+               distance_from_earth_kly: '',
+               constellation: '',
+               apparent_mag: '',
+               right_asc: '',
+               declination: '',
+               toggle: false,
+            }}
+            validate={values => {
+                const errors = {};
+                if(!values.messier_id) {
+                    errors.messier_id = 'Required';
+                } else if(values.messier_id.length > 5) {
+                    errors.messier_id = 'Must be 5 characters or less';
+                }
+
+                if(!values.ngc_ic_num) {
+                    errors.ngc_ic_num = 'Required';
+                } else if(values.ngc_ic_num.length > 10) {
+                    errors.ngc_ic_num = 'Must be 10 characters or less';
+                }
+                
+                if(!values.image) {
+                    errors.image = 'Required';
+                } else if(values.image.length > 512) {
+                    errors.image = 'Must be a URL';
+                }
+                
+                if(!values.distance_from_earth_kly) {
+                    errors.distance_from_earth_kly = 'Required';
+                } else if(values.distance_from_earth_kly.length > 10) {
+                    errors.distance_from_earth_kly = 'Must be 10 characters or less';
+                }
+                
+                if(!values.constellation) {
+                    errors.constellation = 'Required';
+                } else if(values.constellation.length > 512) {
+                    errors.constellation = 'Must be 512 characters or less';
+                }
+                
+                if(!values.apparent_mag) {
+                    errors.apparent_mag = 'Required';
+                } else if(values.apparent_mag.length > 10) {
+                    errors.apparent_mag = 'Must be 10 characters or less';
+                }
+                
+                if(!values.right_asc) {
+                    errors.right_asc = 'Required';
+                } else if(values.right_asc.length > 10) {
+                    errors.right_asc = 'Must be 10 characters or less';
+                }
+                
+                if(!values.declination) {
+                    errors.declination = 'Required';
+                } else if(values.declination.length > 10) {
+                    errors.declination = 'Must be 10 characters or less';
+                }
+                
+                if(!values.observation_completed) {
+                    errors.observation_completed = 'Required';
+                } else if(values.observation_completed.length > 10) {
+                    errors.observation_completed = 'Must be 10 characters or less';
+                }
+                return errors;
+            }}
+            onSubmit={(values, {setSubmitting}) => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+            }}
+            >
+                {({ isSubmitting }) => (
+                    <Form>
+                        <label htmlFor='messier_id'>
+                            Messier Number
+                            <Field name='messier_id' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='messier_id' component='div'/>
+                        <br />
+                        <label htmlFor='ngc_ic_num'>
+                            New General Catalogue ID
+                            <Field name='ngc_ic_num' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='ngc_ic_num' component='div' />
+                        <br />
+                        <label htmlFor='common_name'>
+                            Common Name (if applicable)
+                            <Field name='common_name' type='text'/> 
+                        </label>
+                        {/* <br />
+                        <ErrorMessage name='messier_id' component='div'/>
+                        <br /> */}
+                        <label htmlFor='image'>
+                            Image URL
+                            <Field name='image' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='image' component='div'/>
+                        <br />
+                        <label htmlFor='distance_from_earth_kly'>
+                            Distance from Earth (kly)
+                            <Field name='distance_from_earth_kly' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='distance_from_earth_kly' component='div'/>
+                        <br />
+                        <label htmlFor='constellation'>
+                            Constellation
+                            <Field name='constellation' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='constellation' component='div'/>
+                        <br />
+                        <label htmlFor='apparent_mag'>
+                            Apparent Magnitude
+                            <Field name='apparent_mag' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='apparent_mag' component='div'/>
+                        <br />
+                        <label htmlFor='right_asc'>
+                            RA
+                            <Field name='right_asc' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='right_asc' component='div'/>
+                        <br />
+                        <label htmlFor='declination'>
+                            Dec
+                            <Field name='declination' type='text'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='declination' component='div'/>
+                        <br />
+                        <label htmlFor='observation_completed'>
+                            Observation Completed?
+                            <Field name='toggle' type='checkbox'/> 
+                        </label>
+                        <br />
+                        <ErrorMessage name='observation_completed' component='div'/>
+                        <br />
+                        <button type='submit' disabled={isSubmitting}>Update</button>
+                    </Form>
+                )}
+            </Formik>
+        );
+}
  
  

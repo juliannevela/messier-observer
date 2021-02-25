@@ -43,7 +43,7 @@ export default class ListPage extends Component {
                 </aside>
                 
                 <ul className='list'>
-                    {messier_catalog.map(item => <Link to={`/messier_catalog/${item.messier_id}`} key={item.messier_id}>                        
+                    {messier_catalog.map(item => <Link to={`/messier_catalog/${item.messier_id}`} key={item.messier_id}> {console.log(item.messier_id)}                       
                         <li className='messierObject' key={item.messier_id}>
                             <p>{item.messier_id} ({item.ngc_ic_num})</p>
                             <img alt={item.type} src={item.image} />
@@ -51,11 +51,11 @@ export default class ListPage extends Component {
                             <p>Object Type: {item.type}</p>
                             <p>Distance from Earth (kly): {item.distance_from_earth_kly}</p>
                             <p>Constellation: {item.constellation}</p>
-                            <p>Apparent Magnitude: {item.apparent_mag}</p>
+                            <p>Apparent Magnitude: Number({item.apparent_mag})</p>
                             <p>RA: {item.right_asc}</p>
                             <p>dec: {item.declination}</p>
-                            <p>{item.observation_completed}</p>
-                        </li>)
+                            <p>Completed Observation? {item.observation_completed}</p>
+                        </li>
                         </Link>
                     )}
                 </ul>
