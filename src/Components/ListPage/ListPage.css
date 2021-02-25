@@ -1,0 +1,55 @@
+.messierCatalog {
+	display: grid;
+	gap: 5px 5px;
+	grid-template-columns: 2fr 4fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	grid-template-areas:
+		'colDesc objList'
+		'colDesc objList'
+		'objClass objList'
+		'objClass objList';
+	width: auto;
+	content: '';
+	clear: both;
+}
+
+.float {
+	float: left;
+}
+
+.list {
+	display: flex;
+	grid-area: objList;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: auto;
+	border: 5px solid orangered;
+}
+
+li {
+	list-style-type: none;
+}
+
+.messierObject {
+	width: 200px;
+}
+
+.messierObject > img {
+	width: 200px;
+	height: 200px;
+}
+
+.colDescriptions {
+	grid-area: colDesc;
+}
+
+.objectClass {
+	grid-area: objClass;
+}
+
+.subGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: 3px 3px;
+}

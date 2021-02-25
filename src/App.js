@@ -1,25 +1,50 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from 'react-router-dom';
+import Header from './Components/Common/Header/Header.js';
+import HomePage from './Components/HomePage/HomePage.js';
+import ListPage from './Components/ListPage/ListPage.js';
+import DetailsPage from './Components/DetailsPage/DetailsPage.js';
+import CreatePage from './Components/UpdatePage/CreatePage.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <Router>
+                    <Header />
+                    <Switch>
+                        <Route 
+                            path="/" 
+                            exact
+                            component={HomePage} 
+                        />
+                        <Route 
+                            path="/messier_catalog" 
+                            exact
+                            component={ListPage} 
+                        />
+                        <Route 
+                            path="/messier_catalog/:messier_id" 
+                            exact
+                            component={DetailsPage} 
+                        />
+                        <Route 
+                            path="/messier_catalog/create" 
+                            exact
+                            component={CreatePage} 
+                        />
+                    </Switch>
+                    <footer>
+                        contact info goes here. 
+                    </footer>
+                </Router>
+            </div>
+        );
+    }
 }
-
-export default App;
