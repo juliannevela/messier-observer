@@ -6,18 +6,34 @@ export async function getCatalog() {
     return body
 }
 
+export async function getTypes() {
+    const { body } = await request.get(`${URL}/object_types`);
+
+    return body;
+}
+
 export async function getMessierObject(id) {
     const { body } = await request.get(`${URL}/messier_catalog/:${id}`)
 
     return body;
 
 }
-export async function deleteMessierObject() {
+export async function deleteMessierObject(id) {
+    const { body } = await request.delete(`${URL}/messier_catalog/${id}`)
 
+    return body;
 }
-export async function createMessierObject() {
+export async function createMessierObject(messierObject) {
+    const { body } = await request
+        .post(`${URL}/messier_catalog`)
+        .send(messierObject);
 
+        return body;
 }
-export async function updateMessierObject() {
+export async function updateMessierObject(id, messierObject) {
+    const { body } = await request 
+        .put(`${URL}/messier_catalog/${id}`)
+        .send(messierObject);
 
+        return body;
 }

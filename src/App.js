@@ -5,7 +5,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import Header from './Components/Common/Header.js';
+import Header from './Components/Common/Header/Header.js';
 import HomePage from './Components/HomePage/HomePage.js';
 import ListPage from './Components/ListPage/ListPage.js';
 import DetailPage from './Components/DetailsPage/DetailPage.js';
