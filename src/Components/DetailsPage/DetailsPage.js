@@ -61,16 +61,14 @@ export default class DetailsPage extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		await updateMessierObject(
-			this.props.match.params.messier_id,
-			this.state
-		);
+        const updatedObject = this.state;
+		await updateMessierObject(this.state.messier_id, updatedObject);
 
 		this.props.history.push('/messier_catalog');
 	};
 
     handleDelete = async () => {
-        await deleteMessierObject(this.state.messier_id)
+        await deleteMessierObject(this.state.messier_id);
         this.props.history.push('/messier_catalog')
     } 
 	render() {

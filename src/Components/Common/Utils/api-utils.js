@@ -18,8 +18,8 @@ export async function getMessierObject(id) {
     return body;
 
 }
-export async function deleteMessierObject(id) {
-    const { body } = await request.delete(`${URL}/messier_catalog/${id}`)
+export async function deleteMessierObject(messier_id) {
+    const { body } = await request.delete(`${URL}/messier_catalog/${messier_id}`)
 
     return body;
 }
