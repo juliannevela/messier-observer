@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {updateMessierObject} from './Utils/api-utils.js';
  
  export default function updateForm() {
      return (
@@ -65,16 +66,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
                 } else if(values.declination.length > 10) {
                     errors.declination = 'Must be 10 characters or less';
                 }
-                
-                if(!values.observation_completed) {
-                    errors.observation_completed = 'Required';
-                } else if(values.observation_completed.length > 10) {
-                    errors.observation_completed = 'Must be 10 characters or less';
-                }
                 return errors;
             }}
             onSubmit={(values, {setSubmitting}) => {
-                alert(JSON.stringify(values, null, 2));
+		        updateMessierObject(this.props.match.messier_id, this.state);
+
+		        this.props.history.push('/messier_catalog');
                 setSubmitting(false);
             }}
             >
@@ -147,8 +144,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
                             Observation Completed?
                             <Field name='toggle' type='checkbox'/> 
                         </label>
-                        <br />
-                        <ErrorMessage name='observation_completed' component='div'/>
                         <br />
                         <button type='submit' disabled={isSubmitting}>Update</button>
                     </Form>

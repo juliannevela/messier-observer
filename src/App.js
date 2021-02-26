@@ -30,14 +30,14 @@ export default class App extends Component {
                             component={ListPage} 
                         />
                         <Route 
-                            path="/messier_catalog/:messier_id" 
-                            exact
-                            component={DetailsPage} 
-                        />
-                        <Route 
                             path="/messier_catalog/create" 
                             exact
                             component={CreatePage} 
+                        />
+                        <Route 
+                            path="/messier_catalog/:messier_id" 
+                            exact
+                            component={DetailsPage} 
                         />
                     </Switch>
                     <footer>
