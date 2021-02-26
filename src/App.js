@@ -10,6 +10,7 @@ import HomePage from './Components/HomePage/HomePage.js';
 import ListPage from './Components/ListPage/ListPage.js';
 import DetailsPage from './Components/DetailsPage/DetailsPage.js';
 import CreatePage from './Components/UpdatePage/CreatePage.js';
+import AboutPage from './Components/AboutPage/AboutPage.js';
 
 
 export default class App extends Component {
@@ -38,6 +39,11 @@ export default class App extends Component {
                             path="/messier_catalog/:messier_id" 
                             exact
                             component={DetailsPage} 
+                        />
+                        <Route
+                            path='/about'
+                            exact
+                            component={AboutPage}
                         />
                     </Switch>
                     <footer>

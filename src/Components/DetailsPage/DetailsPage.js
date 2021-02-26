@@ -6,6 +6,7 @@ import {
 	getTypes,
 	updateMessierObject,
 	getTypeId,
+    deleteMessierObject,
 } from '../Common/Utils/api-utils.js';
 
 export default class DetailsPage extends Component {
@@ -30,8 +31,6 @@ export default class DetailsPage extends Component {
 		const messierObject = await getMessierObject(
 			this.props.match.params.messier_id
 		);
-
-        console.log(messierObject, object_types);
 
 		const type_id = getTypeId(messierObject, object_types);
 
@@ -62,7 +61,6 @@ export default class DetailsPage extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-
 		await updateMessierObject(
 			this.props.match.params.messier_id,
 			this.state
@@ -70,6 +68,11 @@ export default class DetailsPage extends Component {
 
 		this.props.history.push('/messier_catalog');
 	};
+
+    handleDelete = async () => {
+        await deleteMessierObject(this.state.messier_id)
+        this.props.history.push('/messier_catalog')
+    } 
 	render() {
         const {
             object_types,
@@ -88,7 +91,9 @@ export default class DetailsPage extends Component {
 
 		return (
 			<main className='detailsPage'>
-				<form onSubmit={this.handleSubmit}>
+                
+
+                <form onSubmit={this.handleSubmit}>
 					<label>
 						Messier Number
 						<input
@@ -111,19 +116,17 @@ export default class DetailsPage extends Component {
 						/>
 					</label>
 					<label>
-						Common Name(if applicable):
-						<input
-							value={common_name}
-							onChange={this.handleCNameChange}
-						/>
+                        Common Name: 
+                        <input value={common_name} onChange={this.handleCNameChange}/>
 					</label>
 					<label>
 						Object Type:
 						<select
 							value={type_id}
 							onChange={this.handleTypeChange}>
+                                <option value=''>Please Select a Type</option>
                             {object_types.map(type => 
-                                <option value={type.id} selected={type_id === type.id}>     {type.type}
+                                <option value={type.id} defaultValue={type_id === type.id}>     {type.type}
                                 </option>
                                 )
                             }
@@ -147,6 +150,8 @@ export default class DetailsPage extends Component {
 						Apparent Magnitude:
 						<input
 							value={apparent_mag}
+                            type='number'
+                            step={0.1}
 							onChange={this.handleMagChange}
 						/>
 					</label>
@@ -174,6 +179,7 @@ export default class DetailsPage extends Component {
 					</label>
 					<button>Change</button>
 				</form>
+                    <button value={messier_id} onClick={this.handleDelete}>Delete</button>
 
 				{/* <Form /> */}
 			</main>
