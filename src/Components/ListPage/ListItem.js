@@ -17,18 +17,20 @@ export default class ListItem extends Component {
 		} = this.props;
 
         return (    
-            <Link to={`/messier_catalog/${messier_id}`}>                 
-                <div className='messierObject'>
-                    <p>{messier_id} ({ngc_ic_num})</p>
+            <Link className='navLink' to={`/messier_catalog/${messier_id}`}>                 
+                <div className='messierObject border-wrap'>
+                    <h3 className='title'>{messier_id} ({ngc_ic_num})</h3>
                     <img alt={type} src={image} />
-                    {(common_name === "–") ? console.log('Common Name Not Available') : <p>Common Name: {common_name}</p>}
-                    <p>Object Type: {type}</p>
-                    <p>Distance: {distance_from_earth_kly}</p>
-                    <p>Constellation: {constellation}</p>
-                    <p>Apparent Magnitude: {apparent_mag}</p>
-                    <p>RA: {right_asc}</p>
-                    <p>dec: {declination}</p>
-                    <p>{(observation_completed === true) ? 'Observed' : 'Need to Observe'}</p>
+                    <div className='stats'>
+                        {(common_name === "–") ? console.log('Common Name Not Available') : <span>Common Name: {common_name}</span>}
+                        <span>Object Type: {type}</span>
+                        <span>Distance: {distance_from_earth_kly}</span>
+                        <span>Constellation: {constellation}</span>
+                        <span>Apparent Magnitude: {apparent_mag}</span>
+                        <span>RA: {right_asc}</span>
+                        <span>DEC: {declination}</span>
+                        <span>{(observation_completed === true) ? 'Observed' : 'Need to Observe'}</span>
+                    </div>
                 </div>
             </Link>
         )

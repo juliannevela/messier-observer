@@ -1,4 +1,17 @@
+.detailsPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	color: aliceblue;
+	padding: 20px;
+	border-radius: 10px;
 }

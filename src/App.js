@@ -47,7 +47,7 @@ export default class App extends Component {
                         />
                     </Switch>
                     <footer>
-                        contact info goes here. 
+                        &copy;2020 Julianne Vela
                     </footer>
                 </Router>
             </div>

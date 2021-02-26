@@ -11,4 +11,27 @@ body {
 	background-image: url(./Assets/SVG/pattern.svg);
 	background-repeat: no-repeat;
 	background-position: cover;
+	height: 100vh;
+	margin: 0;
+}
+
+.border-wrap {
+	background: linear-gradient(to right, rgb(37, 0, 0), rgb(99, 27, 99));
+}
+
+footer {
+	display: flex;
+	width: 100%;
+	text-align: left;
+	background-image: linear-gradient(
+		45deg,
+		rgb(46, 0, 211),
+		rgb(30, 83, 255),
+		#000,
+		rgb(46, 0, 211),
+		rgb(120, 3, 150)
+	);
+	color: aliceblue;
+	bottom: 0;
+	position: fixed;
 }

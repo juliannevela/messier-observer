@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {updateMessierObject} from './Utils/api-utils.js';
+import {updateMessierObject} from '../Utils/api-utils.js';
  
  export default function updateForm() {
      return (

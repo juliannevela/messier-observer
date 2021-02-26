@@ -1,26 +1,34 @@
 export const legend = [
     {
-        description: 'M | Messier Catalog Number'
+        id: 'M',
+        description: 'Messier Catalog Number'
     }, 
     {
-        description: 'NGC | New General Catalog Number'
+        id: 'NGC',
+        description: 'New General Catalog Number'
     }, 
     {
-        description: 'Common Name | Informal Name of Messier Object'
+        id: 'Common Name',
+        description: 'Informal Name of Messier Object'
     }, 
     {
-        description: 'Object Type | Celestial Object Classification'
+        id: 'Object Type',
+        description: 'Celestial Object Classification'
     }, 
     {
-        description: 'Distance From Earth in Kilo-light-years'
+        id: 'Distance',
+        description: 'From Earth in Kilo-light-years'
     }, 
     {
-        description: 'Apparent Magnitude | Apparent Visual Brightness'
+        id: 'Apparent Magnitude',
+        description: 'Apparent Visual Brightness'
     }, 
     {
-        description: 'Right Ascension | J2000 in Hours and Minutes'
+        id: 'Right Ascension',
+        description: '(J2000) in Hours and Minutes'
     }, 
     {
-        description: 'Declination | J2000 in Degrees and Minutes'
+        id: 'Declination',
+        description: '(J2000) in Degrees and Minutes'
     }, 
 ]

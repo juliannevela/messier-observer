@@ -5,7 +5,7 @@ import {
 } from '../Common/Utils/api-utils';
 import Loading from '../Common/Utils/Loading.js';
 import ListItem from './ListItem.js';
-import LegendDesc from './LegendDesc.js';
+import Legend from './Legend.js';
 
 export default class ListPage extends Component {
     state = {
@@ -33,11 +33,11 @@ export default class ListPage extends Component {
 
         return (
             <main className='messierCatalog'>
-                <LegendDesc />
+                <Legend className='legend float'/>
                 
                 <content className='list'>
                     {loading ? <Loading /> : messier_catalog.map(item => 
-                        <ListItem 
+                        <ListItem
                             key={item.messier_id}
 			                messier_id={item.messier_id}
 			                ngc_ic_num={item.ngc_ic_num}

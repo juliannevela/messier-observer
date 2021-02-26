@@ -93,7 +93,7 @@ export default class DetailsPage extends Component {
 			<main className='detailsPage'>
                 
 
-                <form onSubmit={this.handleSubmit}>
+                <form className='border-wrap' onSubmit={this.handleSubmit}>
 					<label>
 						Messier Number
 						<input
@@ -177,7 +177,7 @@ export default class DetailsPage extends Component {
 							onChange={this.handleObserveChange}
 						/>
 					</label>
-					<button>Change</button>
+					<button style={{alignSelf: 'center'}}>Change</button>
 				</form>
                     <button value={messier_id} onClick={this.handleDelete}>Delete</button>
 
