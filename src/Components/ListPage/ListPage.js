@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './ListPage.css';
-import { getCatalog } from '../Common/Utils/api-utils';
+import { 
+    getCatalog, 
+} from '../Common/Utils/api-utils';
 import Loading from '../Common/Utils/Loading.js';
+import ListItem from './ListItem.js';
+import Legend from './Legend.js';
 
 export default class ListPage extends Component {
     state = {
@@ -30,35 +33,25 @@ export default class ListPage extends Component {
 
         return (
             <main className='messierCatalog'>
-                {loading && <Loading />}
-                <aside className='colDescriptions subGrid'>
-                    <p>descriptions</p>
-                    <p>descriptions</p>
-                    <p>descriptions</p>
-                </aside>
-                <aside className='objectClass subGrid'>
-                    <p>types</p>
-                    <p>types</p>
-                    <p>types</p>
-                </aside>
+                <Legend className='legend float'/>
                 
-                <ul className='list'>
-                    {messier_catalog.map(item => <Link to={`/messier_catalog/${item.messier_id}`} key={item.messier_id}> {console.log(item.messier_id)}                       
-                        <li className='messierObject' key={item.messier_id}>
-                            <p>{item.messier_id} ({item.ngc_ic_num})</p>
-                            <img alt={item.type} src={item.image} />
-                            <p>Common Name: {item.common_name}</p>
-                            <p>Object Type: {item.type}</p>
-                            <p>Distance from Earth (kly): {item.distance_from_earth_kly}</p>
-                            <p>Constellation: {item.constellation}</p>
-                            <p>Apparent Magnitude: Number({item.apparent_mag})</p>
-                            <p>RA: {item.right_asc}</p>
-                            <p>dec: {item.declination}</p>
-                            <p>Completed Observation? {item.observation_completed}</p>
-                        </li>
-                        </Link>
-                    )}
-                </ul>
+                <content className='list'>
+                    {loading ? <Loading /> : messier_catalog.map(item => 
+                        <ListItem
+                            key={item.messier_id}
+			                messier_id={item.messier_id}
+			                ngc_ic_num={item.ngc_ic_num}
+                            common_name={item.common_name !== '-' ? item.common_name : console.log('Common Name Unavailable')}
+			                image={item.image}
+			                type={item.type}
+			                distance_from_earth_kly={item.distance_from_earth_kly}
+			                constellation={item.constellation}
+			                apparent_mag={item.apparent_mag}
+			                right_asc={item.right_asc}
+			                declination={item.declination}
+			                observation_completed={item.observation_completed}
+                        />)}
+                </content>
             </main>
         )
     }

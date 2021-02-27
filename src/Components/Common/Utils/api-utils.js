@@ -18,14 +18,14 @@ export async function getMessierObject(id) {
     return body;
 
 }
-export async function deleteMessierObject(id) {
-    const { body } = await request.delete(`${URL}/messier_catalog/${id}`)
+export async function deleteMessierObject(messier_id) {
+    const { body } = await request.delete(`${URL}/messier_catalog/${messier_id}`)
 
     return body;
 }
 export async function createMessierObject(messierObject) {
     const { body } = await request
-        .post(`${URL}/messier_catalog`)
+        .post(`${URL}/messier_catalog/`)
         .send(messierObject);
 
         return body;
@@ -38,11 +38,11 @@ export async function updateMessierObject(id, messierObject) {
         return body;
 }
 
-export async function getTypeId(object, types) {
-    const type = types.find(type =>
-        object.object_type === type.type
+export async function getTypeId(object, object_types) {
+    const objType = object_types.find(objType =>
+        object.type === objType.type
     );
 
-    const typeId = type.id;
+    const typeId = objType.id;
     return typeId;
 }

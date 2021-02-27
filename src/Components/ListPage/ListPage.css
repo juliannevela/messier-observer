@@ -1,13 +1,11 @@
 .messierCatalog {
 	display: grid;
 	gap: 5px 5px;
-	grid-template-columns: 2fr 4fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 5fr;
+	grid-template-rows: 1fr 1fr;
 	grid-template-areas:
-		'colDesc objList'
-		'colDesc objList'
-		'objClass objList'
-		'objClass objList';
+		'legend objList'
+		'. objList';
 	width: auto;
 	content: '';
 	clear: both;
@@ -23,33 +21,74 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	width: auto;
-	border: 5px solid orangered;
+	height: 850px;
+	overflow-y: scroll;
+	padding: 5px;
 }
-
 li {
 	list-style-type: none;
 }
 
 .messierObject {
-	width: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 350px;
+	height: 475px;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
+	color: aliceblue;
+}
+
+.messierObject > .title {
+	padding: 5px;
+	margin: 0;
 }
 
 .messierObject > img {
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
+	border-radius: 10px;
 }
 
-.colDescriptions {
-	grid-area: colDesc;
+.stats {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	text-align: left;
+	justify-self: flex-start;
 }
 
-.objectClass {
-	grid-area: objClass;
+.legend {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-self: center;
+	width: 80%;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 20px;
+	grid-area: legend;
 }
 
-.subGrid {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
-	gap: 3px 3px;
+.legTitle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	margin: 0;
+	text-align: center;
+	background-color: aliceblue;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.content {
+	padding: 5px;
+	color: aliceblue;
+	background-color: rgba(22, 2, 97, 0.7);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
