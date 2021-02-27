@@ -4,13 +4,13 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	margin: 20px;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
+	width: 100%;
 	color: aliceblue;
 	padding: 20px;
 	border-radius: 10px;
