@@ -1,0 +1,61 @@
+.tab-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 1px solid #ccc;
+	padding-left: 0;
+}
+
+.tab-list-item {
+	display: inline-block;
+	list-style: none;
+	margin-bottom: -1px;
+	padding: 0.5rem 0.75rem;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	box-shadow: 2px 0px 5px #000;
+}
+
+.tab-list-item {
+	color: rgb(107, 114, 119);
+	font-family: 'Astro Space';
+}
+
+.tab-list-active {
+	border: solid #ccc;
+	color: aliceblue;
+	border-width: 1px 1px 0 1px;
+}
+
+.tab-content {
+	font-size: 1.3rem;
+	color: aliceblue;
+}
+
+a {
+	color: aliceblue;
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: rgb(124, 0, 226);
+}
+
+.resourceLinks {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+section.tabs {
+	display: flex;
+	flex-direction: column;
+	height: 600px;
+	width: 60%;
+	padding: 0px 20px 20px 20px;
+	border-radius: 20px;
+	margin: 20px;
+	background-color: rgb(50, 3, 138);
+}
