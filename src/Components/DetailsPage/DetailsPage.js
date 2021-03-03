@@ -115,12 +115,10 @@ export default class DetailsPage extends Component {
 						<select
 							value={type_id}
 							onChange={this.handleTypeChange}>
-							<option value=''>Please Select a Type</option>
 							{object_types.map((type) => (
 								<option
 									value={type.id}
-									defaultValue={type_id === type.id}>
-									{' '}
+									defaultValue={type.id === type_id}>
 									{type.type}
 								</option>
 							))}

@@ -99,12 +99,9 @@ export default class CreatePage extends Component {
 						<select
 							value={type_id}
 							onChange={this.handleTypeChange}>
+							<option value=''>Please Select a Type</option>
 							{object_types.map((type) => (
-								<option
-									value={type.id}
-									defaultValue={type_id === type.id}>
-									{type.type}
-								</option>
+								<option value={type.id}>{type.type}</option>
 							))}
 						</select>
 						<label>Distance from Earth (kly):</label>
