@@ -6,7 +6,7 @@ import {
 	getTypes,
 	updateMessierObject,
 	getTypeId,
-    deleteMessierObject,
+	deleteMessierObject,
 } from '../Common/Utils/api-utils.js';
 
 export default class DetailsPage extends Component {
@@ -61,19 +61,19 @@ export default class DetailsPage extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-        const updatedObject = this.state;
+		const updatedObject = this.state;
 		await updateMessierObject(this.state.messier_id, updatedObject);
 
 		this.props.history.push('/messier_catalog');
 	};
 
-    handleDelete = async () => {
-        await deleteMessierObject(this.state.messier_id);
-        this.props.history.push('/messier_catalog')
-    } 
+	handleDelete = async () => {
+		await deleteMessierObject(this.state.messier_id);
+		this.props.history.push('/messier_catalog');
+	};
 	render() {
-        const {
-            object_types,
+		const {
+			object_types,
 			messier_id,
 			ngc_ic_num,
 			common_name,
@@ -89,97 +89,84 @@ export default class DetailsPage extends Component {
 
 		return (
 			<main className='detailsPage'>
-                <section>
-                    <form className='border-wrap' onSubmit={this.handleSubmit}>
-                        <label>
-                            Messier Number
-                            </label>
-                            <input
-                                value={messier_id}
-                                onChange={this.handleIdChange}
-                            />
-                        <label>
-                            New General Catalogue ID
-                            </label>
-                            <input
-                                value={ngc_ic_num}
-                                onChange={this.handleNGCChange}
-                            />
-                        <label>
-                            Image URL:
-                            </label>
-                            <input
-                                value={image}
-                                onChange={this.handleImageChange}
-                            />
-                        <label>
-                            Common Name: 
-                        </label>
-                            <input value={common_name} onChange={this.handleCNameChange}/>
-                        <label>
-                            Object Type:
-                            </label>
-                            <select
-                                value={type_id}
-                                onChange={this.handleTypeChange}>
-                                    <option value=''>Please Select a Type</option>
-                                {object_types.map(type => 
-                                    <option value={type.id} defaultValue={type_id === type.id}>     {type.type}
-                                    </option>
-                                    )
-                                }
-                            </select>
-                        <label>
-                            Distance from Earth (kly):
-                            </label>
-                            <input
-                                value={distance_from_earth_kly}
-                                onChange={this.handleDistanceChange}
-                            />
-                        <label>
-                            Constellation:
-                            </label>
-                            <input
-                                value={constellation}
-                                onChange={this.handleConsteChange}
-                            />
-                        <label>
-                            Apparent Magnitude:
-                            </label>
-                            <input
-                                value={apparent_mag}
-                                type='number'
-                                step={0.1}
-                                onChange={this.handleMagChange}
-                            />
-                        <label>
-                            RA:
-                            </label>
-                            <input
-                                value={right_asc}
-                                onChange={this.handleRAChange}
-                            />
-                        <label>
-                            Declination:
-                            </label>
-                            <input
-                                value={declination}
-                                onChange={this.handleDecChange}
-                            />
-                        <label>
-                            Observation Completed?
-                            </label>
-                            <input
-                                type='checkbox'
-                                value={observation_completed}
-                                onChange={this.handleObserveChange}
-                            />
-                        <button style={{alignSelf: 'center'}}>Change</button>
-                    </form>
-                        <button value={messier_id} onClick={this.handleDelete}>Delete</button>
+				<section>
+					<form className='border-wrap' onSubmit={this.handleSubmit}>
+						<label>Messier Number</label>
+						<input
+							value={messier_id}
+							onChange={this.handleIdChange}
+						/>
+						<label>New General Catalogue ID</label>
+						<input
+							value={ngc_ic_num}
+							onChange={this.handleNGCChange}
+						/>
+						<label>Image URL:</label>
+						<input
+							value={image}
+							onChange={this.handleImageChange}
+						/>
+						<label>Common Name:</label>
+						<input
+							value={common_name}
+							onChange={this.handleCNameChange}
+						/>
+						<label>Object Type:</label>
+						<select
+							value={type_id}
+							onChange={this.handleTypeChange}>
+							<option value=''>Please Select a Type</option>
+							{object_types.map((type) => (
+								<option
+									value={type.id}
+									defaultValue={type_id === type.id}>
+									{' '}
+									{type.type}
+								</option>
+							))}
+						</select>
+						<label>Distance from Earth (kly):</label>
+						<input
+							value={distance_from_earth_kly}
+							onChange={this.handleDistanceChange}
+						/>
+						<label>Constellation:</label>
+						<input
+							value={constellation}
+							onChange={this.handleConsteChange}
+						/>
+						<label>Apparent Magnitude:</label>
+						<input
+							placeholder='12.5'
+							value={apparent_mag}
+							type='number'
+							step={0.1}
+							onChange={this.handleMagChange}
+						/>
+						<label>RA:</label>
+						<input
+							value={right_asc}
+							onChange={this.handleRAChange}
+						/>
+						<label>Declination:</label>
+						<input
+							value={declination}
+							onChange={this.handleDecChange}
+						/>
+						<label>Observation Completed?</label>
+						<input
+							type='checkbox'
+							value={observation_completed}
+							onChange={this.handleObserveChange}
+						/>
+						<button style={{ alignSelf: 'center' }}>Change</button>
+					</form>
+					<button value={messier_id} onClick={this.handleDelete}>
+						Delete
+					</button>
 
-                    {/* <Form /> */}
-                </section>
+					{/* <Form /> */}
+				</section>
 			</main>
 		);
 	}
